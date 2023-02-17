@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PackingUI</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="put_package">Put Package in System</string>
+    <string name="get_package">Get Package from System</string>
+    <string name="change_package">Change Details of Package</string>
+</resources>
