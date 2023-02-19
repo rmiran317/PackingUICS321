@@ -114,11 +114,32 @@ public class FullscreenActivity extends AppCompatActivity {
         mVisible = true;
         mControlsView = binding.fullscreenContentControls;
         mContentView = binding.fullscreenContent;
-        Button button = findViewById(R.id.putPack);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button putButton = findViewById(R.id.putPack);
+        putButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openNewActivity();
+                openPackPage();
+            }
+        });
+        Button getButton = findViewById(R.id.getPack);
+        getButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGetPage();
+            }
+        });
+        Button removeButton = findViewById(R.id.changePack);
+        removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openRemovePage();
+            }
+        });
+        Button scanButton = findViewById(R.id.createLabel);
+        scanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openScanPage();
             }
         });
 
@@ -138,8 +159,20 @@ public class FullscreenActivity extends AppCompatActivity {
         //binding.getPack.setOnTouchListener(mDelayHideTouchListener); //did add putPack instead of dummyButton
     }
 
-    public void openNewActivity(){
+    public void openPackPage(){
         Intent intent = new Intent(this, NewPackPage.class);
+        startActivity(intent);
+    }
+    public void openGetPage(){
+        Intent intent = new Intent(this, GetPackPage.class);
+        startActivity(intent);
+    }
+    public void openRemovePage(){
+        Intent intent = new Intent(this, RemovePackPage.class);
+        startActivity(intent);
+    }
+    public void openScanPage(){
+        Intent intent = new Intent(this, NewScanPage.class);
         startActivity(intent);
     }
 

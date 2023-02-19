@@ -12,12 +12,12 @@
          TextureView, etc. -->
 
     <TextView
-        android:id="@+id/GetPage"
+        android:id="@+id/ScanPage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:keepScreenOn="true"
-        android:text="@string/get_pack_text"
+        android:text="@string/scan_pack_text"
         android:textColor="?attr/fullscreenTextColor"
         android:textSize="50sp"
         android:textStyle="bold" />

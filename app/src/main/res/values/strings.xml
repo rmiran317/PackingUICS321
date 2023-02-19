@@ -2,9 +2,13 @@
     <string name="app_name">PackingUI</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="put_package">Put Package in System</string>
-    <string name="get_package">Get Package from System</string>
-    <string name="change_package">Change Details of Package</string>
-    <string name="dummy_title">WHERE WE PUT PACKAGES</string>
+    <string name="put_package">Scan Package to System</string>
+    <string name="get_package">Assisted Sort</string>
+    <string name="change_package">Scan to Load</string>
     <string name="create_label">Create Label</string>
+    <string name="put_pack_text">Scan Package</string>
+    <string name="get_pack_text">Assisted Sort</string>
+    <string name="remove_pack_text">Scan to Load</string>
+    <string name="scan_pack_text">Create Label</string>
+
 </resources>

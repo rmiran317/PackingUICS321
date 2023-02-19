@@ -12,6 +12,9 @@
         android:theme="@style/Theme.PackingUI"
         tools:targetApi="31">
         <activity
+            android:name=".NewScanPage"
+            android:exported="false" />
+        <activity
             android:name=".RemovePackPage"
             android:exported="false" />
         <activity
