@@ -47,7 +47,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:text="@string/put_package"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
 
             <Button
@@ -58,7 +58,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:text="@string/get_package"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
 
             <Button
@@ -69,7 +69,18 @@
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:text="@string/change_package"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/createLabel"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="0sp"
+                android:layout_weight="1"
+                android:background="@drawable/button_border"
+                android:text="@string/create_label"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
 
         </LinearLayout>
