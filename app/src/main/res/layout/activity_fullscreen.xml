@@ -10,6 +10,7 @@
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
+
     <TextView
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
@@ -23,6 +24,7 @@
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -45,7 +47,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:text="@string/put_package"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/getPack"
@@ -55,7 +58,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:text="@string/get_package"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/changePack"
@@ -65,7 +69,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:text="@string/change_package"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="24sp" />
 
         </LinearLayout>
     </FrameLayout>

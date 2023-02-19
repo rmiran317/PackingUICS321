@@ -1,8 +1,9 @@
 package com.example.packingui;
 
 import android.annotation.SuppressLint;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +11,7 @@ import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
+import android.widget.Button;
 
 import com.example.packingui.databinding.ActivityFullscreenBinding;
 
@@ -112,6 +114,13 @@ public class FullscreenActivity extends AppCompatActivity {
         mVisible = true;
         mControlsView = binding.fullscreenContentControls;
         mContentView = binding.fullscreenContent;
+        Button button = findViewById(R.id.putPack);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewActivity();
+            }
+        });
 
         // Set up the user interaction to manually show or hide the system UI.
         mContentView.setOnClickListener(new View.OnClickListener() {
@@ -124,9 +133,14 @@ public class FullscreenActivity extends AppCompatActivity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        binding.putPack.setOnTouchListener(mDelayHideTouchListener); //did add putPack instead of dummyButton
-        binding.changePack.setOnTouchListener(mDelayHideTouchListener); //did add putPack instead of dummyButton
-        binding.getPack.setOnTouchListener(mDelayHideTouchListener); //did add putPack instead of dummyButton
+        //binding.putPack.setOnTouchListener(mDelayHideTouchListener); //did add putPack instead of dummyButton
+        //binding.changePack.setOnTouchListener(mDelayHideTouchListener); //did add putPack instead of dummyButton
+        //binding.getPack.setOnTouchListener(mDelayHideTouchListener); //did add putPack instead of dummyButton
+    }
+
+    public void openNewActivity(){
+        Intent intent = new Intent(this, NewPackPage.class);
+        startActivity(intent);
     }
 
     @Override

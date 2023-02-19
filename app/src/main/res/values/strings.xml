@@ -5,4 +5,5 @@
     <string name="put_package">Put Package in System</string>
     <string name="get_package">Get Package from System</string>
     <string name="change_package">Change Details of Package</string>
+    <string name="dummy_title">I PUT THE NEW FORGIS ON THE JEEP</string>
 </resources>
