@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PackingUI</string>
     <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="welcome_screen">Welcome to the\nPackaging System</string>
     <string name="put_package">Scan Package to System</string>
     <string name="get_package">Assisted Sort</string>
     <string name="change_package">Scan to Load</string>
