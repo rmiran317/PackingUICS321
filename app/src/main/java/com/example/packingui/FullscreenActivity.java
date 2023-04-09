@@ -1,9 +1,12 @@
 package com.example.packingui;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +15,23 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
 import android.widget.Button;
+
+import android.graphics.Point;
+import android.graphics.Rect;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.mlkit.vision.barcode.common.Barcode;
+import com.google.mlkit.vision.barcode.BarcodeScanner;
+import com.google.mlkit.vision.barcode.BarcodeScannerOptions;
+import com.google.mlkit.vision.barcode.BarcodeScanning;
+import com.google.mlkit.vision.common.InputImage;
+
+import java.util.List;
 
 import com.example.packingui.databinding.ActivityFullscreenBinding;
 
@@ -39,6 +59,8 @@ public class FullscreenActivity extends AppCompatActivity {
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler(Looper.myLooper());
     private View mContentView;
+
+
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -157,6 +179,8 @@ public class FullscreenActivity extends AppCompatActivity {
         //binding.putPack.setOnTouchListener(mDelayHideTouchListener); //did add putPack instead of dummyButton
         //binding.changePack.setOnTouchListener(mDelayHideTouchListener); //did add putPack instead of dummyButton
         //binding.getPack.setOnTouchListener(mDelayHideTouchListener); //did add putPack instead of dummyButton
+
+
     }
 
     public void openPackPage(){
@@ -174,6 +198,52 @@ public class FullscreenActivity extends AppCompatActivity {
     public void openScanPage(){
         Intent intent = new Intent(this, NewScanPage.class);
         startActivity(intent);
+    }
+
+
+    public void scanBarcodes(InputImage image){
+        BarcodeScannerOptions options = new BarcodeScannerOptions.Builder().setBarcodeFormats(Barcode.FORMAT_EAN_13).build(); //PUT FORMATS HERE
+
+        BarcodeScanner scanner = BarcodeScanning.getClient(options);
+
+        Task<List<Barcode>> result = scanner.process(image)
+                .addOnSuccessListener(new OnSuccessListener<List<Barcode>>() {
+                    @Override
+                    public void onSuccess(List<Barcode> barcodes) {
+                        // Task completed successfully
+                        // [START_EXCLUDE]
+                        // [START get_barcodes]
+                        for (Barcode barcode: barcodes) {
+                            Rect bounds = barcode.getBoundingBox();
+                            Point[] corners = barcode.getCornerPoints();
+
+                            String rawValue = barcode.getRawValue();
+
+                            int valueType = barcode.getValueType();
+                            // See API reference for complete list of supported types
+                            switch (valueType) {
+                                case Barcode.TYPE_WIFI:
+                                    String ssid = barcode.getWifi().getSsid();
+                                    String password = barcode.getWifi().getPassword();
+                                    int type = barcode.getWifi().getEncryptionType();
+                                    break;
+                                case Barcode.TYPE_URL:
+                                    String title = barcode.getUrl().getTitle();
+                                    String url = barcode.getUrl().getUrl();
+                                    break;
+                            }
+                        }
+                        // [END get_barcodes]
+                        // [END_EXCLUDE]
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Task failed with an exception
+                        // ...
+                    }
+                });
     }
 
     @Override

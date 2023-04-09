@@ -3,12 +3,13 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="welcome_screen">Welcome to the\nPackaging System</string>
     <string name="put_package">Scan Package to System</string>
-    <string name="get_package">Assisted Sort</string>
+    <string name="get_package">Search</string>
     <string name="change_package">Scan to Load</string>
     <string name="create_label">Create Label</string>
     <string name="put_pack_text">Scan Package</string>
-    <string name="get_pack_text">Assisted Sort</string>
+    <string name="get_pack_text">Search</string>
     <string name="remove_pack_text">Scan to Load</string>
     <string name="scan_pack_text">Create Label</string>
+    <string name="scan_barcode">Scan Barcode</string>
 
 </resources>

@@ -39,6 +39,12 @@
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
+      <Button
+          android:id="@+id/enableCamera"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/scan_barcode" />
+
     </LinearLayout>
   </FrameLayout>
 
