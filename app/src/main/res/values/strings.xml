@@ -11,5 +11,8 @@
     <string name="remove_pack_text">Scan to Load</string>
     <string name="scan_pack_text">Create Label</string>
     <string name="scan_barcode">Scan Barcode</string>
+    <string name="enter_package_num">Enter in the Package Number:</string>
+    <string name="search_button">Search</string>
+    <string name="search_package_page">Search for a Package</string>
 
 </resources>
