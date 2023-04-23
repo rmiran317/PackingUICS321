@@ -60,6 +60,11 @@ public class FullscreenActivity extends AppCompatActivity {
     private final Handler mHideHandler = new Handler(Looper.myLooper());
     private View mContentView;
 
+    public static DS4States ds4States;
+    public static ReverseDS4States revDS4State;
+    public static StatesGraph1 sGraph;
+    public static TreePackage bigTree;
+
 
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
@@ -136,6 +141,15 @@ public class FullscreenActivity extends AppCompatActivity {
         mVisible = true;
         mControlsView = binding.fullscreenContentControls;
         mContentView = binding.fullscreenContent;
+
+        /*
+         * Created class instances
+         */
+        ds4States = new DS4States();
+        revDS4State = new ReverseDS4States();
+        sGraph = new StatesGraph1(ds4States);
+        bigTree = new TreePackage();
+
         Button putButton = findViewById(R.id.putPack);
         putButton.setOnClickListener(new View.OnClickListener() {
             @Override

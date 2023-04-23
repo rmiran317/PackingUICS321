@@ -64,10 +64,12 @@
                 android:layout_width="fill_parent"
                 android:layout_height="56dp"
                 android:hint="@string/enter_package_num"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/search_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="100dp"

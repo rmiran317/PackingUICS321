@@ -14,5 +14,10 @@
     <string name="enter_package_num">Enter in the Package Number:</string>
     <string name="search_button">Search</string>
     <string name="search_package_page">Search for a Package</string>
+    <string name="newLabelHeader">Enter Information for a New Package</string>
+    <string name="weight_entry">Enter in the Weight:</string>
+    <string name="start_location_entry">Enter in the Starting Location</string>
+    <string name="end_location_entry">Enter in the Ending Location</string>
+    <string name="create_package">Create Package</string>
 
 </resources>

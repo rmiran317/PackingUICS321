@@ -37,7 +37,64 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:orientation="vertical"
+            android:background="#24292f"
             tools:ignore="UselessParent">
+
+            <TextView
+                android:id="@+id/header_text"
+                android:layout_width="match_parent"
+                android:layout_height="148dp"
+                android:paddingTop="0dp"
+                android:text="@string/newLabelHeader"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:background="?android:attr/listDivider" />
+
+            <EditText
+                android:id="@+id/start_location_entry"
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:hint="@string/start_location_entry"
+                android:inputType="textNoSuggestions"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/end_location_entry"
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:hint="@string/end_location_entry"
+                android:inputType="textNoSuggestions"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/weight_entry"
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:fontFamily="sans-serif"
+                android:hint="@string/weight_entry"
+                android:inputType="number|numberDecimal"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/newPackageButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/create_package" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="match_parent"
+                android:layout_height="281dp"
+                android:background="?android:attr/listDivider" />
 
         </LinearLayout>
     </FrameLayout>
