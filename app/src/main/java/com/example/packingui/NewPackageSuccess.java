@@ -10,11 +10,19 @@ import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class NewPackageSuccess extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        String tracker = Double.toString(newNode.getID());
+        NumberFormat nf = DecimalFormat.getInstance();
+        nf.setMaximumFractionDigits(0);
+        String tracker = nf.format(newNode.getID());
+
+        System.out.println(tracker.length());
+        tracker = tracker.replaceAll(",", "");
         builder.setMessage("Package Successfully created!\nTracking Number: " + tracker)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

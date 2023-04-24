@@ -33,9 +33,9 @@ public class NewScanPage extends AppCompatActivity {
         getButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String startLoc = startLocEntry.getText().toString();
-                String endLoc = endLocEntry.getText().toString();
-                String stringWeight = weightEntry.getText().toString();
+                String startLoc = startLocEntry.getText().toString().trim();
+                String endLoc = endLocEntry.getText().toString().trim();
+                String stringWeight = weightEntry.getText().toString().trim();
                 double weight = Double.parseDouble(stringWeight);
 
                 try{

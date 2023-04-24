@@ -24,13 +24,16 @@ public class TreePackage extends Application {
 //
 //        return true;
 //    }
-    public void addVal(packageNodeClass packageVal){
+    public boolean addVal(packageNodeClass packageVal){
+        containsID(packageVal.getID());
         if(packageNodeClassPriorityQueue.contains(packageVal)){
             System.out.println("ERROR: The package is in the system.");
+            return false;
         }
         else{
             packageNodeClassPriorityQueue.add(packageVal);
             System.out.println("Package successfully added into tree.");
+            return true;
         }
 
     }

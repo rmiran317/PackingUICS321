@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PackingUI"
         tools:targetApi="31">
+        <activity android:name=".LabelScanned" />
         <activity
             android:name=".CameraAnalyzer" />
         <activity

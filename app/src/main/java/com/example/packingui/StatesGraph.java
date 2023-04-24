@@ -1,19 +1,14 @@
 package com.example.packingui;
 
+import com.example.packingui.DS4States;
+
 import java.util.*;
+public class StatesGraph {
+    private final double adjacencyMatrix[][];
 
-public class StatesGraph1 {
-    private Map<Integer, Map<Integer, Double>> graph;
+    public StatesGraph(DS4States states) {
 
-    public StatesGraph1(DS4States states) {
-        this.graph = new HashMap<Integer, Map<Integer, Double>>();
-
-        // Initialize graph with states as nodes
-        for (int i = 0; i < 50; i++) {
-            graph.put(i, new HashMap<Integer, Double>());
-        }
-
-        // Add edges between neighboring states
+        adjacencyMatrix = new double[50][50];
         addEdge(states.getStateCode("Alabama"), states.getStateCode("Mississippi"), 3.8822408125808);
         addEdge(states.getStateCode("Alabama"), states.getStateCode("Tennessee"), 3.8188474339472);
         addEdge(states.getStateCode("Alabama"), states.getStateCode("Florida"), 2.799910679216);
@@ -224,42 +219,48 @@ public class StatesGraph1 {
         addEdge(states.getStateCode("wyoming"), states.getStateCode("colorado"), 1.410670198673);
         addEdge(states.getStateCode("wyoming"), states.getStateCode("idaho"), 11.646063161191);
         addEdge(states.getStateCode("wyoming"), states.getStateCode("montana"), 9.0258924994297);
-        // add more edges as needed...
+
     }
 
     private void addEdge(int source, int destination, double weight) {
-        graph.get(source).put(destination, weight);
-        graph.get(destination).put(source, weight);
+
+        adjacencyMatrix[source][destination] = weight;
+        adjacencyMatrix[destination][source] = weight;
+
     }
 
-    //
     public LinkedList<Integer> shortestPath(int start, int end) {
-        Map<Integer, Double> distances = new HashMap<Integer, Double>();
-        Map<Integer, Integer> previousNodes = new HashMap<Integer, Integer>();
-        PriorityQueue<Integer> queue = new PriorityQueue<Integer>(new Comparator<Integer>() {
-            public int compare(Integer a, Integer b) {
-                return Double.compare(distances.getOrDefault(a, Double.POSITIVE_INFINITY), distances.getOrDefault(b, Double.POSITIVE_INFINITY));
+        double[] nodeDistance = new double[50];
+        int[] previousNodes = new int[50];
+        boolean[] visited = new boolean[50];
+        Arrays.fill(nodeDistance, Double.POSITIVE_INFINITY);
+        Arrays.fill(previousNodes, -1);
+        nodeDistance[start] = 0;
+
+        for (int i = 0; i < 49; i++) {
+            double minDistance = Double.POSITIVE_INFINITY;
+            int minIndex = -1;
+
+            for (int j = 0; j < 50; j++) {
+                if (!visited[j] && nodeDistance[j] < minDistance) {
+                    minDistance = nodeDistance[j];
+                    minIndex = j;
+                }
             }
-        });
+            visited[minIndex] = true;
 
-        distances.put(start, 0.0);
-        queue.add(start);
-
-        while (!queue.isEmpty()) {
-            int current = queue.poll();
-
-            if (current == end) {
+            if (minIndex == end) {
                 break;
             }
 
-            for (Map.Entry<Integer, Double> neighbor : graph.get(current).entrySet()) {
-                int neighborNode = neighbor.getKey();
-                double cost = distances.getOrDefault(current, Double.POSITIVE_INFINITY) + neighbor.getValue();
+            for (int k = 0; k < 50; k++) {
+                if (adjacencyMatrix[minIndex][k] != 0 && !visited[k]) {
+                    double cost = nodeDistance[minIndex] + adjacencyMatrix[minIndex][k];
 
-                if (cost < distances.getOrDefault(neighborNode, Double.POSITIVE_INFINITY)) {
-                    distances.put(neighborNode, cost);
-                    previousNodes.put(neighborNode, current);
-                    queue.add(neighborNode);
+                    if (cost < nodeDistance[k]) {
+                        nodeDistance[k] = cost;
+                        previousNodes[k] = minIndex;
+                    }
                 }
             }
         }
@@ -267,25 +268,12 @@ public class StatesGraph1 {
         LinkedList<Integer> path = new LinkedList<Integer>();
         int currentNode = end;
 
-        while (previousNodes.containsKey(currentNode)) {
+        while (currentNode != -1) {
             path.addFirst(currentNode);
-            currentNode = previousNodes.get(currentNode);
-        }
-
-        if (path.size() > 0) {
-            path.addFirst(start);
+            currentNode = previousNodes[currentNode];
         }
 
         return path;
     }
 
-    public static void main(String[] args) {
-        DS4States states = new DS4States();
-        StatesGraph1 graph = new StatesGraph1(states);
-
-        LinkedList<Integer> path = graph.shortestPath(states.getStateCode("alabama"), states.getStateCode("new york"));
-        System.out.println(path);
-    }
 }
-
-

@@ -13,7 +13,7 @@ public class packageNodeClass implements Comparable<packageNodeClass> {
 
     private DS4States states = new DS4States();
 
-    private StatesGraph1 graph = new StatesGraph1(states);
+    private StatesGraph graph = new StatesGraph(states);
 
     private ReverseDS4States rStates = new ReverseDS4States();
 

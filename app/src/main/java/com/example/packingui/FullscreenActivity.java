@@ -62,7 +62,7 @@ public class FullscreenActivity extends AppCompatActivity {
 
     public static DS4States ds4States;
     public static ReverseDS4States revDS4State;
-    public static StatesGraph1 sGraph;
+    public static StatesGraph sGraph;
     public static TreePackage bigTree;
 
 
@@ -147,7 +147,7 @@ public class FullscreenActivity extends AppCompatActivity {
          */
         ds4States = new DS4States();
         revDS4State = new ReverseDS4States();
-        sGraph = new StatesGraph1(ds4States);
+        sGraph = new StatesGraph(ds4States);
         bigTree = new TreePackage();
 
         Button putButton = findViewById(R.id.putPack);
